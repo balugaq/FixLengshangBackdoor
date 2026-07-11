@@ -1,7 +1,13 @@
-name: CHANGEME
+name: FixLengshangBackdoor
 author: balugaq
-description: This is a plugin
-main: com.balugaq.changeme.implementation.Main
-website: https://github.com/balugaq/CHANGEME
+description: This is a plugin which aims to fix Lengshang RSC backdoor
+main: com.balugaq.flb.implementation.FixLengshangBackdoor
+website: https://github.com/balugaq/FixLengshangBackdoor
 version: ${project.version}
-api-version: 1.20
+api-version: 1.17
+depend:
+  - Slimefun
+softdepend:
+  - GuizhanPluginLib
+  - RykenSlimefunCustomizer
+
