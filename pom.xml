@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.balugaq.flb</groupId>
     <artifactId>FixLengshangBackdoor</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <pluginRepositories>
         <pluginRepository>
