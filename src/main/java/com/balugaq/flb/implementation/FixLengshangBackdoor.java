@@ -72,6 +72,10 @@ public class FixLengshangBackdoor extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(this, this);
 
         getLogger().info("成功启用 " + getName());
+
+        if (Bukkit.getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
+            tryUpdate();
+        }
     }
 
     public void banItems() {
@@ -131,7 +135,7 @@ public class FixLengshangBackdoor extends JavaPlugin implements Listener {
     private void tryUpdate() {
         try {
             if (configManager.isAutoUpdate() && getDescription().getVersion().startsWith("Build")) {
-                GuizhanUpdater.start(this, getFile(), author, repo, branch);
+                GuizhanUpdater.start(this, getFile(), username, repo, branch);
             }
         } catch (NoClassDefFoundError | NullPointerException | UnsupportedClassVersionError e) {
             getLogger().info("自动更新失败: " + e.getMessage());
