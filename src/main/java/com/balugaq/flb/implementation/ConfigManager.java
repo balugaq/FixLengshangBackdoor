@@ -61,4 +61,8 @@ public class ConfigManager {
     public boolean isDebug() {
         return plugin.getConfig().getBoolean("debug");
     }
+
+    public boolean isAutoUpdate() {
+        return plugin.getConfig().getBoolean("auto-update");
+    }
 }

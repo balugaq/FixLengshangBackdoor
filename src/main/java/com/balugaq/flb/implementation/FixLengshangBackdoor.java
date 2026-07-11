@@ -3,6 +3,7 @@ package com.balugaq.flb.implementation;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.OptionalMap;
 import lombok.Getter;
+import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -39,7 +40,10 @@ public class FixLengshangBackdoor extends JavaPlugin implements Listener {
             "RED_CLOTH",
             "PINK_CLOTH",
             "BLUE_CLOTH",
-            "骨头"
+            "骨头",
+            "LSDGZ",
+            "LENGSHANG_LSDGZ",
+            "FR1"
     );
 
     public FixLengshangBackdoor() {
@@ -119,5 +123,19 @@ public class FixLengshangBackdoor extends JavaPlugin implements Listener {
     @NotNull
     public String getBugTrackerURL() {
         return MessageFormat.format("https://github.com/{0}/{1}/issues/", this.username, this.repo);
+    }
+
+    /**
+     * Attempts to update the plugin if auto-update is enabled.
+     */
+    private void tryUpdate() {
+        try {
+            if (configManager.isAutoUpdate() && getDescription().getVersion().startsWith("Build")) {
+                GuizhanUpdater.start(this, getFile(), author, repo, branch);
+            }
+        } catch (NoClassDefFoundError | NullPointerException | UnsupportedClassVersionError e) {
+            getLogger().info("自动更新失败: " + e.getMessage());
+            Debug.trace(e);
+        }
     }
 }
