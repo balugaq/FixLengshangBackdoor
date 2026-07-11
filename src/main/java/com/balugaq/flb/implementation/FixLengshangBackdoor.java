@@ -1,6 +1,7 @@
 package com.balugaq.flb.implementation;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.OptionalMap;
 import lombok.Getter;
 import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
@@ -89,6 +90,11 @@ public class FixLengshangBackdoor extends JavaPlugin implements Listener {
 
                 // disable item
                 sf.disable();
+
+                Slimefun.getItemCfg().setValue(sf.getId() + ".enabled", false);
+                Slimefun.getItemCfg().save();
+
+                getLogger().info("成功禁用该物品！");
             }
         }
     }
