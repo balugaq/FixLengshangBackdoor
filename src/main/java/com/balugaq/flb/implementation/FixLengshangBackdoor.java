@@ -80,9 +80,11 @@ public class FixLengshangBackdoor extends JavaPlugin implements Listener {
     }
 
     public void banItems() {
+        boolean handled = false;
         for (String id : ids) {
             SlimefunItem sf = SlimefunItem.getById(id);
             if (sf != null) {
+                handled = true;
                 getLogger().info("检测到 " + sf + " 正在禁用物品");
 
                 // clear item handlers
@@ -92,10 +94,12 @@ public class FixLengshangBackdoor extends JavaPlugin implements Listener {
                 sf.disable();
 
                 Slimefun.getItemCfg().setValue(sf.getId() + ".enabled", false);
-                Slimefun.getItemCfg().save();
 
                 getLogger().info("成功禁用该物品！");
             }
+        }
+        if (handled) {
+            Slimefun.getItemCfg().save();
         }
     }
 
